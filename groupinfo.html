@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrekMate - The Western Ghats Wanderers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #FF914D;
+      --dark: #2f4f4f;
+      --light-bg: #fff;
+      --dark-bg: #1e1e1e;
+      --text: #333;
+      --text-light: #fff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: var(--light-bg);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode .navbar {
+      background-color: #292929;
+    }
+
+    .navbar h2 {
+      font-size: 24px;
+    }
+
+    .auth button, .toggle-mode {
+      padding: 8px 16px;
+      border: none;
+      background: var(--primary);
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .toggle-mode {
+      background: #444;
+    }
+
+    .hero {
+      position: relative;
+      height: 350px;
+      background: url('./images/westerngroup.jpg') no-repeat center center/cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .group-info {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      color: white;
+    }
+
+    .group-info h1 {
+      font-size: 32px;
+    }
+
+    .group-info p {
+      margin-top: 5px;
+      font-size: 16px;
+    }
+
+    .group-actions {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .group-actions button {
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .share-btn {
+      background-color: #404C3C;
+      color: white;
+    }
+
+    .follow-btn {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #eee;
+      padding: 0 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 15px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #555;
+      transition: color 0.3s;
+    }
+
+    .tab.active {
+      border-bottom: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .tab-content {
+      padding: 30px 30px;
+    }
+
+    .overview-large h2 {
+      font-size: 28px;
+    }
+
+    .overview-large p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .navbar, .tabs, .tab-content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+      }
+
+      .group-info, .group-actions {
+        position: static;
+        padding: 15px;
+      }
+    }
+
+    /* Scroll Gallery */
+    .trek-post {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+      padding: 20px;
+      max-width: 800px;
+      margin-inline: auto;
+    }
+
+    .trek-title {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .trek-date {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .trek-caption {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .image-scroll {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      padding-bottom: 10px;
+    }
+
+    .image-scroll img {
+      height: 200px;
+      border-radius: 10px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+
+    .image-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .image-scroll::-webkit-scrollbar-thumb {
+      background-color: #aaa;
+      border-radius: 4px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .image-scroll img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <h2>TrekMate</h2>
+    <div class="auth">
+      <button>Login</button>
+      <button>Join Now</button>
+      <button class="toggle-mode" onclick="toggleTheme()">Toggle Dark Mode</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="overlay"></div>
+    <div class="group-info">
+      <div style="background:white;color:#2f4f4f;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:20px;">WG</div>
+      <h1>The Western Ghats Wanderers</h1>
+      <p>Mumbai, Maharashtra • 245 members</p>
+    </div>
+    <div class="group-actions">
+      <button class="share-btn">Share</button>
+      <button class="follow-btn">Follow</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab(0)">Overview</div>
+    <div class="tab" onclick="showTab(1)">Reviews</div>
+    <div class="tab" onclick="showTab(2)">Events</div>
+    <div class="tab" onclick="showTab(3)">Gallery</div>
+  </div>
+
+  <div class="tab-content" id="tabContent">
+    <!-- Loaded dynamically -->
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const tabContent = document.getElementById('tabContent');
+
+    const contents = [
+      // Overview
+      `<div class="overview-large">
+        <h2>About The Western Ghats Wanderers</h2>
+        <p><strong>Slogan:</strong> "Explore the Untamed. Embrace the Unknown."</p>
+        <p>The Western Ghats Wanderers is a passionate community of nature lovers and adventure seekers dedicated to exploring the breathtaking trails of the Western Ghats. Our group organizes regular treks, nature walks, and camping experiences that connect individuals to nature and to each other. Whether you're a seasoned trekker or just starting out, we welcome everyone who shares the love for the outdoors!</p>
+      </div>`,
+
+      // Reviews
+      `<iframe src="reviews.html" width="100%" height="600" frameborder="0" style="border: none;"></iframe>`,
+
+      // Events
+      `<div class="bg-gradient-to-r from-green-600 to-blue-500 text-white py-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold">Explore the Majestic Trails of India</h1>
+        <p class="text-lg mt-2">Join the adventure, one peak at a time!</p>
+      </div>
+      <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <img src="./images/kudremukh.png" alt="Kudremukh Trek"/>
+          <div class="p-4">
+            <h2 class="text-xl font-bold">Kudremukh Trek</h2>
+            <span class="inline-block mt-2 px-2 py-1 text-sm bg-yellow-200 text-yellow-900 rounded">Moderate</span>
+            <p class="mt-2 text-gray-600"><span>📅</span> Sept 14, 2025</p>
+            <p class="text-gray-600"><span>📍</span> Chikmagalur, Karnataka</p>
+            <p class="text-gray-600"><span>👥</span> 18/25 joined</p>
+            <button class="mt-4 w-full bg-orange-400 text-white py-2 rounded hover:bg-orange-500">Join This Trek</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <img src="./images/kodachadri.jpg" alt="Kodachadri Trek"/>
+          <div class="p-4">
+            <h2 class="text-xl font-bold">Kodachadri Trek</h2>
+            <span class="inline-block mt-2 px-2 py-1 text-sm bg-red-200 text-red-900 rounded">Challenging</span>
+            <p class="mt-2 text-gray-600"><span>📅</span> Oct 2, 2025</p>
+            <p class="text-gray-600"><span>📍</span> Shimoga, Karnataka</p>
+            <p class="text-gray-600"><span>👥</span> 15/20 joined</p>
+            <button class="mt-4 w-full bg-orange-400 text-white py-2 rounded hover:bg-orange-500">Join This Trek</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <img src="./images/kumara.webp" alt="Kumara Parvatha Trek"/>
+          <div class="p-4">
+            <h2 class="text-xl font-bold">Kumara Parvatha Trek</h2>
+            <span class="inline-block mt-2 px-2 py-1 text-sm bg-yellow-200 text-yellow-900 rounded">Moderate</span>
+            <p class="mt-2 text-gray-600"><span>📅</span> Nov 12, 2025</p>
+            <p class="text-gray-600"><span>📍</span> Coorg, Karnataka</p>
+            <p class="text-gray-600"><span>👥</span> 12/20 joined</p>
+            <button class="mt-4 w-full bg-orange-400 text-white py-2 rounded hover:bg-orange-500">Join This Trek</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <img src="./images/tadiandamol.jpeg" alt="Tadiandamol Trek"/>
+          <div class="p-4">
+            <h2 class="text-xl font-bold">Tadiandamol Trek</h2>
+            <span class="inline-block mt-2 px-2 py-1 text-sm bg-yellow-200 text-yellow-900 rounded">Moderate</span>
+            <p class="mt-2 text-gray-600"><span>📅</span> Dec 18, 2025</p>
+            <p class="text-gray-600"><span>📍</span> Coorg, Karnataka</p>
+            <p class="text-gray-600"><span>👥</span> 16/25 joined</p>
+            <button class="mt-4 w-full bg-orange-400 text-white py-2 rounded hover:bg-orange-500">Join This Trek</button>
+          </div>
+        </div>
+      </div>`,
+
+      // Gallery
+      `<div class="trek-post">
+        <div class="trek-title">Kudremukh Trek</div>
+        <div class="trek-date">Visited on: June 2025</div>
+        <div class="trek-caption">An unforgettable journey through misty mountains and vibrant green valleys.</div>
+        <div class="image-scroll">
+          <img src="./images/kudremukhgroup1.webp" alt="Kudremukh 1">
+          <img src="./images/kudremukhgroup2.jpg" alt="Kudremukh 2">
+          <img src="./images/kudremukhgroup3.webp" alt="Kudremukh 3">
+        </div>
+      </div>
+      <div class="trek-post">
+        <div class="trek-title">Kodachadri Trek</div>
+        <div class="trek-date">Visited on: July 2025</div>
+        <div class="trek-caption">Challenging climb but the view from the top was worth every step!</div>
+        <div class="image-scroll">
+          <img src="./images/kodachadrigroup1.webp" alt="Kodachadri 1">
+          <img src="./images/kodachadrigroup2.jpg" alt="Kodachadri 2">
+          <img src="./images/kodachadrigroup3.jpg" alt="Kodachadri 3">
+        </div>
+      </div>`
+    ];
+
+    function showTab(index) {
+      tabs.forEach(t => t.classList.remove('active'));
+      tabs[index].classList.add('active');
+      tabContent.innerHTML = contents[index];
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Show Overview on load
+    showTab(0);
+  </script>
+</body>
+</html>

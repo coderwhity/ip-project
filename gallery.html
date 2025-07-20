@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visited Treks</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .trek-post {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+      padding: 20px;
+      max-width: 800px;
+      margin-inline: auto;
+    }
+
+    .trek-title {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .trek-date {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .trek-caption {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .image-scroll {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      padding-bottom: 10px;
+    }
+
+    .image-scroll img {
+      height: 200px;
+      border-radius: 10px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+
+    .image-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .image-scroll::-webkit-scrollbar-thumb {
+      background-color: #aaa;
+      border-radius: 4px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .image-scroll img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Kudremukh Post -->
+  <div class="trek-post">
+    <div class="trek-title">Kudremukh Trek</div>
+    <div class="trek-date">Visited on: June 2025</div>
+    <div class="trek-caption">An unforgettable journey through misty mountains and vibrant green valleys.</div>
+    <div class="image-scroll">
+      <img src="./images/kudremukhgroup1.webp" alt="Kudremukh 1">
+      <img src="./images/kudremukhgroup2.jpg" alt="Kudremukh 2">
+      <img src="./images/kudremukhgroup3.webp" alt="Kudremukh 3">
+    </div>
+  </div>
+
+  <!-- Kodachadri Post -->
+  <div class="trek-post">
+    <div class="trek-title">Kodachadri Trek</div>
+    <div class="trek-date">Visited on: July 2025</div>
+    <div class="trek-caption">Challenging climb but the view from the top was worth every step!</div>
+    <div class="image-scroll">
+      <img src="./images/kodachadrigroup1.webp" alt="Kodachadri 1">
+      <img src="./images/kodachadrigroup2.jpg" alt="Kodachadri 2">
+      <img src="./images/kodachadrigroup3.jpg" alt="Kodachadri 3">
+    </div>
+  </div>
+
+</body>
+</html>
