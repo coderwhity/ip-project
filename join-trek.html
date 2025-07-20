@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise Trek to Lohagad Fort</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --background-start: #f8f8f8;
+            --background-end: #e6e9f0; /* Lighter shade for the gradient end */
+            --text-primary: #1f2937;
+            --text-muted-foreground: #6b7280;
+            --accent-orange: #f97316; /* NEW ACCENT COLOR: A vibrant orange */
+            --accent-orange-hover: #ea580c; /* Slightly darker orange for hover */
+            --yellow-star: #fbbf24;
+            --red-alert: #ef4444;
+
+            /* Card background for glass effect */
+            --card-bg-rgb: 255, 255, 255; /* White with transparency */
+            --card-border-color: rgba(229, 231, 235, 0.7); /* Light gray border for glass */
+            --muted-bg-light: rgba(243, 244, 246, 0.5); /* For itinerary item background */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, var(--background-start), var(--background-end));
+            min-height: 100vh;
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 60vh; /* Adjust as needed */
+            overflow: hidden;
+            display: flex; /* For content positioning */
+            align-items: flex-end; /* Align content to the bottom */
+            padding: 1.5rem;
+        }
+
+        .hero-section img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2; /* Behind overlay and content */
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2), transparent);
+            z-index: -1; /* Above image, below content */
+        }
+
+        .hero-content {
+            color: white;
+            position: relative; /* To be above the gradient */
+            z-index: 1;
+            /* Adjust padding or margin here if needed for overall content position */
+            padding-bottom: 2rem; /* Add some padding at the bottom for better spacing from the edge */
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.675rem; /* Slightly increased for better visibility */
+            font-weight: 600;
+            background-color: var(--accent-orange);
+            color: white;
+            text-shadow: 0 0 2px rgba(0,0,0,0.2);
+            /* NEW: Positioning for the badge */
+            position: absolute; /* Position it absolutely within hero-content */
+            left: 0; /* Align with the title */
+            /* Ensure the hero-content has padding-top if needed to prevent badge from going too high */
+        }
+
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.3rem; /* Adjusted title size for better visual balance */
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        .hero-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .hero-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .hero-info-item .icon {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .star-icon.filled {
+            color: var(--yellow-star);
+        }
+
+        /* Glass Card Effect */
+        .glass-card {
+            background-color: rgba(var(--card-bg-rgb), 0.7); /* Slightly transparent white */
+            border-radius: 0.75rem; /* More rounded corners */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* Larger, softer shadow */
+            backdrop-filter: blur(15px); /* Stronger blur */
+            -webkit-backdrop-filter: blur(15px); /* For Safari support */
+            border: 1px solid var(--card-border-color); /* Subtle border */
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(var(--card-bg-rgb), 0.5); /* Lighter border */
+        }
+
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.35rem; /* Slightly larger title */
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        /* Grid Layout */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .grid-layout {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 2rem; /* Adjusted sticky top for better visibility */
+            align-self: flex-start; /* Ensure it sticks properly */
+        }
+
+        /* Quick Info */
+        .quick-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .quick-info-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .quick-info-item {
+            text-align: center;
+            padding: 0.5rem 0; /* Add some padding for spacing */
+        }
+
+        .quick-info-item .icon {
+            width: 1.75rem; /* Larger icons */
+            height: 1.75rem;
+            margin: 0 auto 0.75rem; /* Center and add more bottom margin */
+            color: var(--accent-orange);
+        }
+
+        .quick-info-item p:first-of-type {
+            font-size: 0.875rem;
+            color: var(--text-muted-foreground);
+            margin-bottom: 0.25rem;
+        }
+
+        .quick-info-item p:last-of-type {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Description */
+        .description-text {
+            color: var(--text-muted-foreground);
+            line-height: 1.75; /* Increased line height for readability */
+        }
+
+        /* Highlights & Included */
+        .highlights-grid,
+        .included-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .highlights-grid,
+            .included-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* More space */
+            color: var(--text-primary);
+            font-size: 0.95rem; /* Slightly larger font */
+        }
+
+        .list-item .icon {
+            width: 1.1rem; /* Slightly larger icons */
+            height: 1.1rem;
+            color: var(--accent-orange);
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+
+        .list-item .dot {
+            width: 0.6rem; /* Larger dot */
+            height: 0.6rem;
+            background-color: var(--accent-orange);
+            border-radius: 9999px;
+            flex-shrink: 0;
+        }
+
+        /* Itinerary */
+        .itinerary-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem; /* Reduced gap for compact list */
+        }
+
+        .itinerary-item {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 1rem; /* Added horizontal padding */
+            border-radius: 0.5rem;
+            background-color: var(--muted-bg-light); /* Lighter background for glass effect */
+            align-items: flex-start; /* Align text to top */
+            border: 1px solid rgba(var(--card-bg-rgb), 0.3); /* Subtle border */
+        }
+
+        .itinerary-time-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.2rem 0.6rem; /* Smaller padding for badge */
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--accent-orange);
+            color: var(--accent-orange);
+            background-color: rgba(var(--accent-orange-hover), 0.1);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* Booking Form */
+        .booking-price-section {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-price .price-amount {
+            font-size: 2.5rem; /* Larger price */
+            font-weight: 700;
+            color: var(--accent-orange);
+            line-height: 1;
+            
+        }
+
+        .booking-price .per-person {
+            font-size: 0.9rem;
+            color: var(--text-muted-foreground);
+            margin-top: 0.25rem;
+        }
+
+        .spots-left {
+            font-size: 0.9rem;
+            color: var(--red-alert);
+            margin-top: 0.75rem; /* More space */
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem; /* Reduced margin */
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            display: block;
+            width: calc(100% - 2rem); /* Account for padding */
+            padding: 0.75rem 1rem; /* More padding */
+            border-radius: 0.5rem; /* More rounded */
+            border: 1px solid rgba(209, 213, 219, 0.7); /* Lighter border for glass */
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque white */
+            font-size: 1rem;
+            color: var(--text-primary);
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* Subtle inner shadow */
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 0 3px rgba(var(--accent-orange-hover), 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 6rem; /* Slightly taller textarea */
+            resize: vertical;
+        }
+
+        .form-summary {
+            padding-top: 1rem;
+            border-top: 1px solid rgba(229, 231, 235, 0.7); /* Lighter border */
+            margin-top: 1.5rem;
+        }
+
+        .form-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem; /* More space */
+            font-size: 0.95rem;
+        }
+
+        .form-summary-item span:last-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .btn {
+            display: flex; /* Changed to flex for centering content */
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.85rem 1.25rem; /* Increased padding */
+            border-radius: 0.5rem; /* More rounded */
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            background-color: var(--accent-orange);
+            color: white; /* Changed text color to white for contrast */
+            border: none;
+            font-size: 1.05rem; /* Slightly larger text */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-orange-hover);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Organizer Info */
+        .organizer-card {
+            margin-top: 0.5rem; /* Reduced margin from 1rem to 0.5rem */
+        }
+
+        .organizer-card .card-header {
+            padding-bottom: 0.5rem; /* Less padding for header */
+            border-bottom: none; /* No border here */
+        }
+
+        .organizer-card .card-content {
+            padding-top: 0.5rem; /* Less padding for content */
+        }
+
+        .organizer-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .organizer-avatar {
+            width: 3.5rem; /* Larger avatar */
+            height: 3.5rem;
+            background-color: rgba(var(--accent-orange-hover), 0.1);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .organizer-avatar .icon {
+            width: 1.75rem; /* Larger icon inside avatar */
+            height: 1.75rem;
+            color: var(--accent-orange);
+        }
+
+        .organizer-details p {
+            margin: 0; /* Remove default paragraph margin */
+        }
+
+        .organizer-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+        }
+
+        .organizer-rating-info {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.9rem;
+            color: var(--text-muted-foreground);
+        }
+
+        .organizer-rating-info .star-icon.filled {
+            width: 1rem;
+            height: 1rem;
+            color: var(--yellow-star);
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen">
+        <div class="hero-section">
+            <img src="group1.jpg" alt="Sunrise Trek to Lohagad Fort">
+            <div class="hero-content">
+                <span class="hero-badge">Moderate</span>
+                <h1 class="hero-title">Sunrise Trek to Lohagad Fort</h1>
+                <div class="hero-info">
+                    <div class="hero-info-item">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        Lonavala, Maharashtra
+                    </div>
+                    <div class="hero-info-item">
+                        <i class="fas fa-star icon star-icon filled"></i>
+                        4.7
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="container">
+            <div class="grid-layout">
+                <div class="main-content">
+                    <div class="glass-card">
+                        <div class="card-content">
+                            <div class="quick-info-grid">
+                                <div class="quick-info-item">
+                                    <i class="fas fa-calendar-alt icon"></i>
+                                    <p>Date</p>
+                                    <p>Dec 28, 2024</p>
+                                </div>
+                                <div class="quick-info-item">
+                                    <i class="fas fa-clock icon"></i>
+                                    <p>Duration</p>
+                                    <p>1 Day</p>
+                                </div>
+                                <div class="quick-info-item">
+                                    <i class="fas fa-users icon"></i>
+                                    <p>Group Size</p>
+                                    <p>24/30</p>
+                                </div>
+                                <div class="quick-info-item">
+                                    <i class="fas fa-dollar-sign icon"></i>
+                                    <p>Price</p>
+                                    <p>₹1200</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h2 class="card-title">About This Trek</h2>
+                        </div>
+                        <div class="card-content">
+                            <p class="description-text">
+                                Experience the breathtaking sunrise from the historic Lohagad Fort. This moderate trek offers stunning views of the Western Ghats and rich Maratha history.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Trek Highlights</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="highlights-grid">
+                                <div class="list-item">
+                                    <i class="fas fa-check-circle icon"></i> <span>Spectacular sunrise views</span>
+                                </div>
+                                <div class="list-item">
+                                    <i class="fas fa-check-circle icon"></i>
+                                    <span>Historic fort exploration</span>
+                                </div>
+                                <div class="list-item">
+                                    <i class="fas fa-check-circle icon"></i>
+                                    <span>Professional guide included</span>
+                                </div>
+                                <div class="list-item">
+                                    <i class="fas fa-check-circle icon"></i>
+                                    <span>Safety equipment provided</span>
+                                </div>
+                                <div class="list-item">
+                                    <i class="fas fa-check-circle icon"></i>
+                                    <span>Photography opportunities</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Detailed Itinerary</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="itinerary-list">
+                                <div class="itinerary-item">
+                                    <span class="itinerary-time-badge">4:00 AM</span>
+                                    <span>Departure from Mumbai</span>
+                                </div>
+                                <div class="itinerary-item">
+                                    <span class="itinerary-time-badge">6:00 AM</span>
+                                    <span>Trek start from base village</span>
+                                </div>
+                                <div class="itinerary-item">
+                                    <span class="itinerary-time-badge">7:30 AM</span>
+                                    <span>Reach fort summit</span>
+                                </div>
+                                <div class="itinerary-item">
+                                    <span class="itinerary-time-badge">8:00 AM</span>
+                                    <span>Sunrise viewing & breakfast</span>
+                                </div>
+                                <div class="itinerary-item">
+                                    <span class="itinerary-time-badge">10:00 AM</span>
+                                    <span>Fort exploration</span>
+                                </div>
+                                <div class="itinerary-item">
+                                    <span class="itinerary-time-badge">11:30 AM</span>
+                                    <span>Descent begins</span>
+                                </div>
+                                <div class="itinerary-item">
+                                    <span class="itinerary-time-badge">1:00 PM</span>
+                                    <span>Lunch at local restaurant</span>
+                                </div>
+                                <div class="itinerary-item">
+                                    <span class="itinerary-time-badge">3:00 PM</span>
+                                    <span>Return journey to Mumbai</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h2 class="card-title">What's Included</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="included-grid">
+                                <div class="list-item">
+                                    <div class="dot"></div>
+                                    <span>Transportation from Mumbai</span>
+                                </div>
+                                <div class="list-item">
+                                    <div class="dot"></div>
+                                    <span>Professional trek guide</span>
+                                </div>
+                                <div class="list-item">
+                                    <div class="dot"></div>
+                                    <span>Breakfast & lunch</span>
+                                </div>
+                                <div class="list-item">
+                                    <div class="dot"></div>
+                                    <span>Safety equipment</span>
+                                </div>
+                                <div class="list-item">
+                                    <div class="dot"></div>
+                                    <span>First aid support</span>
+                                </div>
+                                <div class="list-item">
+                                    <div class="dot"></div>
+                                    <span>Photography service</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h2 class="card-title" style="text-align: center;">
+                                Book Your Spot
+                            </h2>
+                            <div class="booking-price-section">
+                                <p class="price-amount">₹1200</p>
+                                <p class="per-person">per person</p>
+                                <p class="spots-left">
+                                    Only 6 spots left!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <form action="#" method="POST" onsubmit="alert('Booking submitted!'); return false;" class="space-y-4">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="text" id="phone" name="phone" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="participants">Number of Participants</label>
+                                    <input type="number" id="participants" name="participants" min="1" max="6" value="1" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="requests">Special Requests (Optional)</label>
+                                    <textarea id="requests" name="requests" placeholder="Any special dietary requirements, medical conditions, etc."></textarea>
+                                </div>
+
+                                <div class="form-summary">
+                                    <div class="form-summary-item">
+                                        <span>Subtotal (<span id="num-participants-display">1</span> × ₹1200)</span>
+                                        <span id="total-price-display">₹1200</span>
+                                    </div>
+                                    <button type="submit" class="btn">
+                                        Book Now - ₹<span id="book-now-price-display">1200</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="glass-card organizer-card">
+                        <div class="card-header">
+                            <h3 class="card-title" style="font-size: 1rem;">Trek Organizer</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="organizer-content">
+                                <div class="organizer-avatar">
+                                    <i class="fas fa-users icon"></i>
+                                </div>
+                                <div class="organizer-details">
+                                    <p class="organizer-name">Mumbai Trekkers</p>
+                                    <div class="organizer-rating-info">
+                                        <i class="fas fa-star star-icon filled"></i>
+                                        <span>4.7 rating</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Basic JavaScript to update total price based on participants
+        const pricePerPerson = 1200;
+        const maxSpotsLeft = 6; // From trek.maxParticipants - trek.currentParticipants (30 - 24)
+        const participantsInput = document.getElementById('participants');
+        const numParticipantsDisplay = document.getElementById('num-participants-display');
+        const totalPriceDisplay = document.getElementById('total-price-display');
+        const bookNowPriceDisplay = document.getElementById('book-now-price-display');
+
+        participantsInput.addEventListener('input', () => {
+            let participants = parseInt(participantsInput.value);
+
+            if (isNaN(participants) || participants < 1) {
+                participants = 1; // Default to 1 if input is invalid
+                participantsInput.value = 1;
+            } else if (participants > maxSpotsLeft) {
+                participants = maxSpotsLeft;
+                participantsInput.value = maxSpotsLeft;
+            }
+
+            const totalPrice = participants * pricePerPerson;
+            numParticipantsDisplay.textContent = participants;
+            totalPriceDisplay.textContent = `₹${totalPrice}`;
+            bookNowPriceDisplay.textContent = totalPrice;
+        });
+
+
+         document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get('title');
+    if (title) {
+      document.getElementById('trek-title').textContent = decodeURIComponent(title);
+    }
+  });
+    </script>
+</body>
+</html>

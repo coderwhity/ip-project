@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrekMate - Find Your Trail, Find Your Tribe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+  <div class="container">
+    <div class="header-content">
+      <div class="logo">TrekMate</div>
+      <div class="header-buttons">
+        <button id="openLogin" class="btn btn-ghost">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+          Login
+        </button>
+        <button class="btn btn-primary">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M17 20h5v-2a3 3 0 00-5.196-2.121M9 6a3 3 0 106 0M9 6a3 3 0 016 0m6 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          Join Now
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">TrekMate</h1>
+            <p class="hero-subtitle">Find Your Trail, Find Your Tribe</p>
+            
+            <div class="search-card">
+                <div class="search-form">
+                    <div class="search-input-group">
+                        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input type="text" placeholder="Search by group name" class="search-input">
+                    </div>
+                    <input type="text" placeholder="Location" class="form-input">
+                    <input type="text" placeholder="Region" class="form-input">
+                    <input type="date" placeholder="Date" class="form-input">
+                    <button class="btn btn-search">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Journey So Far</h2>
+                <p class="section-subtitle">Join thousands of trekkers who have discovered amazing trails with TrekMate</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-number">12,500+</div>
+                    <div class="stat-title">Treks Completed</div>
+                    <div class="stat-description">Successful adventures across India</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.196-2.121M9 6a3 3 0 106 0M9 6a3 3 0 616 0m6 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-number">8,200+</div>
+                    <div class="stat-title">Active Trekkers</div>
+                    <div class="stat-description">Growing community of enthusiasts</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-number">450+</div>
+                    <div class="stat-title">Destinations</div>
+                    <div class="stat-description">Across 28 states and UTs</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-number">4.8/5</div>
+                    <div class="stat-title">Average Rating</div>
+                    <div class="stat-description">From 5,000+ reviews</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="adventures-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Adventures</h2>
+                <p class="section-subtitle">Join fellow trekkers on exciting upcoming journeys across breathtaking landscapes</p>
+            </div>
+
+            <div class="adventures-grid">
+                <div class="adventure-card">
+                    <div class="adventure-image">
+                        <img src="assets/group2.jpg" alt="Sunrise Trek to Lohagad Fort">
+                        <span class="difficulty-badge moderate">Moderate</span>
+                    </div>
+                    <div class="adventure-content">
+                        <h3 class="adventure-title">Sunrise Trek to Lohagad Fort</h3>
+                        <div class="adventure-details">
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                <span>Dec 28, 2024</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>Lonavala, Maharashtra</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.196-2.121M9 6a3 3 0 106 0M9 6a3 3 0 616 0m6 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>24/30 joined</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-full"  data-title="lohagad">Join This Trek</button>
+                    </div>
+                </div>
+
+                <div class="adventure-card">
+                    <div class="adventure-image">
+                        <img src="assets/group1.jpg" alt="Himalayan Base Camp Adventure">
+                        <span class="difficulty-badge challenging">Challenging</span>
+                    </div>
+                    <div class="adventure-content">
+                        <h3 class="adventure-title">Himalayan Base Camp Adventure</h3>
+                        <div class="adventure-details">
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                <span>Jan 15, 2025</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 616 0z"></path>
+                                </svg>
+                                <span>Uttarakhand</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.196-2.121M9 6a3 3 0 106 0M9 6a3 3 0 616 0m6 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>12/15 joined</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-full"  data-title="Himalaya">Join This Trek</button>
+                    </div>
+                </div>
+
+                <div class="adventure-card">
+                    <div class="adventure-image">
+                        <img src="assets/group4.jpg" alt="Coastal Trail Experience">
+                        <span class="difficulty-badge easy">Easy</span>
+                    </div>
+                    <div class="adventure-content">
+                        <h3 class="adventure-title">Coastal Trail Experience</h3>
+                        <div class="adventure-details">
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                <span>Jan 22, 2025</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 616 0z"></path>
+                                </svg>
+                                <span>Goa</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.196-2.121M9 6a3 3 0 106 0M9 6a3 3 0 616 0m6 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>18/25 joined</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-full"  data-title="coastal">Join This Trek</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <button class="btn btn-ghost view-all-events">View All Events</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="trekking-groups-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Discover Amazing Trekking Groups</h2>
+                <p class="section-subtitle">Join passionate trekkers from across India. Find your perfect adventure community.</p>
+            </div>
+            <div class="groups-grid">
+                <div class="group-card">
+                    <div class="group-image">
+                        <img src="assets/group2.jpg" alt="The Western Ghats Wanderers">
+                        <span class="badge verified">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg> Verified
+                        </span>
+                        <span class="badge popular">Popular</span>
+                        <span class="rating">4.7 <svg class="icon star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></span>
+                    </div>
+                    <div class="group-content">
+                        <h3 class="group-title">The Western Ghats Wanderers</h3>
+                        <div class="group-details">
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>Mumbai, Maharashtra</span>
+                            </div>
+                            <p class="group-description">Explore the stunning Western Ghats with experienced guides. Perfect for monsoon treks and waterfall adventures.</p>
+                            <div class="group-stats">
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.196-2.121M9 6a3 3 0 106 0M9 6a3 3 0 016 0m6 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>245 members</span>
+                                </div>
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                    </svg>
+                                    <span>126 reviews</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-image">
+                        <img src="assets/group1.jpg" alt="Himalayan High Seekers">
+                        <span class="badge verified">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg> Verified
+                        </span>
+                        <span class="rating">4.9 <svg class="icon star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></span>
+                    </div>
+                    <div class="group-content">
+                        <h3 class="group-title">Himalayan High Seekers</h3>
+                        <div class="group-details">
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>Delhi, NCR</span>
+                            </div>
+                            <p class="group-description">Join us for epic Himalayan adventures. From easy day hikes to challenging multi-day expeditions.</p>
+                            <div class="group-stats">
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.196-2.121M9 6a3 3 0 106 0M9 6a3 3 0 016 0m6 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>156 members</span>
+                                </div>
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                    </svg>
+                                    <span>89 reviews</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-image">
+                        <img src="assets/group3.jpg" alt="Desert Dunes Explorers">
+                        <span class="badge popular">Popular</span>
+                        <span class="rating">4.5 <svg class="icon star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></span>
+                    </div>
+                    <div class="group-content">
+                        <h3 class="group-title">Desert Dunes Explorers</h3>
+                        <div class="group-details">
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>Jaipur, Rajasthan</span>
+                            </div>
+                            <p class="group-description">Experience the magic of Rajasthan's deserts. Camel treks, sand dunes, and stargazing adventures.</p>
+                            <div class="group-stats">
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.196-2.121M9 6a3 3 0 106 0M9 6a3 3 0 016 0m6 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>89 members</span>
+                                </div>
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                    </svg>
+                                    <span>67 reviews</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-image">
+                        <img src="assets/group5.webp" alt="Valley of Flowers Society">
+                        <span class="badge verified">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg> Verified
+                        </span>
+                        <span class="rating">4.8 <svg class="icon star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></span>
+                    </div>
+                    <div class="group-content">
+                        <h3 class="group-title">Valley of Flowers Society</h3>
+                        <div class="group-details">
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>Uttarakhand, Uttarakhand</span>
+                            </div>
+                            <p class="group-description">Discover the breathtaking alpine meadows and rare Himalayan flora with botanical experts.</p>
+                            <div class="group-stats">
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.196-2.121M9 6a3 3 0 106 0M9 6a3 3 0 016 0m6 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>203 members</span>
+                                </div>
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                    </svg>
+                                    <span>156 reviews</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-image">
+                        <img src="assets/group6.jpeg" alt="Coastal Trail Blazers">
+                        <span class="badge verified">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg> Verified
+                        </span>
+                        <span class="rating">4.6 <svg class="icon star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></span>
+                    </div>
+                    <div class="group-content">
+                        <h3 class="group-title">Coastal Trail Blazers</h3>
+                        <div class="group-details">
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>Goa</span>
+                            </div>
+                            <p class="group-description">Beach treks, coastal cliff walks, and hidden cove discoveries along India's beautiful coastline</p>
+                            <div class="group-stats">
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.196-2.121M9 6a3 3 0 106 0M9 6a3 3 0 016 0m6 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>78 members</span>
+                                </div>
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                    </svg>
+                                    <span>45 reviews</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-image">
+                        <img src="assets/group7.jpg" alt="Urban Escape Artists">
+                        <span class="badge verified">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg> Verified
+                        </span>
+                        <span class="badge popular">Popular</span>
+                        <span class="rating">4.6 <svg class="icon star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></span>
+                    </div>
+                    <div class="group-content">
+                        <h3 class="group-title">Urban Escape Artists</h3>
+                        <div class="group-details">
+                            <div class="detail-item">
+                                <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>Bangalore, Karnataka</span>
+                            </div>
+                            <p class="group-description">Weekend gateways from city life. Hills, forests, and heritage walks around South India.</p>
+                            <div class="group-stats">
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.196-2.121M9 6a3 3 0 106 0M9 6a3 3 0 016 0m6 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>167 members</span>
+                                </div>
+                                <div class="stat-item">
+                                    <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                    </svg>
+                                    <span>112 reviews</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <button class="btn btn-ghost load-more-groups">Load More Groups</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Trekkers Say</h2>
+                <p class="section-subtitle">Real experiences from our thriving community of adventure seekers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24" class="w-8 h-8 text-orange-400">
+                            <path d="M11 9H9.5C7.57 9 6 7.43 6 5.5S7.57 2 9.5 2h1C11.33 2 12 2.67 12 3.5v.5C12 4.67 11.33 5 10.5 5H9.5C8.67 5 8 5.67 8 6.5v2.5h3v-2.5C11 5.67 11.67 5 12.5 5h1c.83 0 1.5.67 1.5 1.5v2.5h-3zm10 0H19.5C17.57 9 16 7.43 16 5.5S17.57 2 19.5 2h1C21.33 2 22 2.67 22 3.5v.5C22 4.67 21.33 5 20.5 5H19.5C18.67 5 18 5.67 18 6.5v2.5h3v-2.5C21 5.67 21.67 5 22.5 5h1c.83 0 1.5.67 1.5 1.5v2.5h-3z" />
+                        </svg>
+                    </div>
+                    <div class="star-rating">
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="testimonial-text">"TrekMate connected me with an amazing group for the Roopkund trek. The experience was life-changing, and I made friends for life. The platform makes it so easy to find genuine trekking communities."</p>
+                    <div class="testimonial-author">
+                        <img src="assets/priya.webp" alt="Priya Sharma" class="author-avatar">
+                        <div>
+                            <div class="author-name">Priya Sharma</div>
+                            <div class="author-location">Mumbai, Maharashtra</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24" class="w-8 h-8 text-orange-400">
+                            <path d="M11 9H9.5C7.57 9 6 7.43 6 5.5S7.57 2 9.5 2h1C11.33 2 12 2.67 12 3.5v.5C12 4.67 11.33 5 10.5 5H9.5C8.67 5 8 5.67 8 6.5v2.5h3v-2.5C11 5.67 11.67 5 12.5 5h1c.83 0 1.5.67 1.5 1.5v2.5h-3zm10 0H19.5C17.57 9 16 7.43 16 5.5S17.57 2 19.5 2h1C21.33 2 22 2.67 22 3.5v.5C22 4.67 21.33 5 20.5 5H19.5C18.67 5 18 5.67 18 6.5v2.5h3v-2.5C21 5.67 21.67 5 22.5 5h1c.83 0 1.5.67 1.5 1.5v2.5h-3z" />
+                        </svg>
+                    </div>
+                    <div class="star-rating">
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="testimonial-text">"As a solo traveler, I was hesitant about joining group treks. TrekMate's verified groups and detailed reviews gave me confidence. Now I've completed 8 treks and couldn't be happier!"</p>
+                    <div class="testimonial-author">
+                        <img src="assets/arjun.jpg" alt="Arjun Patel" class="author-avatar">
+                        <div>
+                            <div class="author-name">Arjun Patel</div>
+                            <div class="author-location">Bangalore, Karnataka</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24" class="w-8 h-8 text-orange-400">
+                            <path d="M11 9H9.5C7.57 9 6 7.43 6 5.5S7.57 2 9.5 2h1C11.33 2 12 2.67 12 3.5v.5C12 4.67 11.33 5 10.5 5H9.5C8.67 5 8 5.67 8 6.5v2.5h3v-2.5C11 5.67 11.67 5 12.5 5h1c.83 0 1.5.67 1.5 1.5v2.5h-3zm10 0H19.5C17.57 9 16 7.43 16 5.5S17.57 2 19.5 2h1C21.33 2 22 2.67 22 3.5v.5C22 4.67 21.33 5 20.5 5H19.5C18.67 5 18 5.67 18 6.5v2.5h3v-2.5C21 5.67 21.67 5 22.5 5h1c.83 0 1.5.67 1.5 1.5v2.5h-3z" />
+                        </svg>
+                    </div>
+                    <div class="star-rating">
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5 text-orange-400"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="testimonial-text">"The Western Ghats Wanderers group I found through TrekMate is fantastic. Professional guides, safety-first approach, and the most beautiful trails. This platform is a game-changer for trekking enthusiasts!"</p>
+                    <div class="testimonial-author">
+                        <img src="assets/sneha.jpg" alt="Sneha Reddy" class="author-avatar">
+                        <div>
+                            <div class="author-name">Sneha Reddy</div>
+                            <div class="author-location">Hyderabad, Telangana</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">TrekMate</div>
+                    <p>Connecting trekking enthusiasts across India. Find your perfect trail and join a community that shares your passion for adventure.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.262c-1.225 0-1.606.75-1.606 1.518V12h2.77l-.443 2.891h-2.327v6.987C18.343 21.128 22 16.991 22 12z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M7 6a2 2 0 100-4 2 2 0 000 4zM12 2C9.243 2 7 4.243 7 7v10c0 2.757 2.243 5 5 5s5-2.243 5-5V7c0-2.757-2.243-5-5-5z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.366 5.825a.824.824 0 00-.7-.525.824.824 0 00-.675.225l-2.65 2.65-2.65-2.65a.824.824 0 00-.675-.225.824.824 0 00-.7.525.824.824 0 00.225.675l2.65 2.65-2.65 2.65a.824.824 0 00-.225.675c.075.2.225.375.45.45.175.05.375.025.55-.075l2.65-2.65 2.65 2.65c.175.1.375.125.55.075.225-.075.375-.25.45-.45a.824.824 0 00-.225-.675L17.2 9.15l2.65-2.65a.824.824 0 00.225-.675zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22 6.002a8.03 8.03 0 01-2.31 0c.003.076.003.153.003.23A8.535 8.535 0 0112.5 21.002c-2.396 0-4.63-.699-6.521-1.921a.5.5 0 00-.592-.095l-3.376 1.139a.5.5 0 01-.61-.61l1.139-3.376a.5.5 0 00-.095-.592A8.508 8.508 0 012 12.002c0-4.706 3.794-8.5 8.5-8.5s8.5 3.794 8.5 8.5c0 .351-.013.698-.038 1.042l1.625-.417a.5.5 0 00.395-.494zM12.5 19.502c3.584 0 6.5-2.916 6.5-6.5s-2.916-6.5-6.5-6.5-6.5 2.916-6.5 6.5 2.916 6.5 6.5 6.5z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                        <li><a href="#">Trek Leaders</a></li>
+                        <li><a href="#">Become a Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cancellation Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get in Touch</h4>
+                    <p><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> hello@trekmate.in</p>
+                    <p><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.158L9 12.586a1 1 0 00-.293.707v3.28a2 2 0 002 2h3.28a1 1 0 00.948-.684l1.498-4.493a1 1 0 01-.502-1.158L15 11.414a1 1 0 00-.293-.707V8.72a2 2 0 00-2-2H8.72a1 1 0 01-.684-.948l-4.493-1.498A1 1 0 013 5z"></path></svg> +91 98765 43210</p>
+                    <p><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> Adventure Hub, Bandra West, Mumbai, Maharashtra 400050</p>
+                    <h4 class="mt-4">Stay Updated</h4>
+                    <div class="subscribe-form">
+                        <input type="email" placeholder="Your email" class="subscribe-input">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TrekMate. All rights reserved. Made with ❤️ for adventure lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

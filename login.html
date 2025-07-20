@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | TrekMate</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    .tab-active {
+      background-color: white;
+      color: black;
+    }
+  </style>
+</head>
+<body class="bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center" style="background-image: url('https://source.unsplash.com/1600x900/?mountains');">
+
+  <!-- Login Modal -->
+  <div class="glass-card p-8 w-full max-w-md animate-fade-in-up">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-900">Welcome to TrekMate</h2>
+      <button class="text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex mb-6 bg-white/20 rounded overflow-hidden">
+      <button class="w-1/2 py-2 tab-active font-medium text-sm rounded-l">Login</button>
+      <button class="w-1/2 py-2 text-white hover:bg-white/30 font-medium text-sm">Sign Up</button>
+    </div>
+
+    <!-- Form -->
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-800 mb-1">Email</label>
+        <div class="relative">
+          <input type="email" placeholder="Enter your email" class="w-full p-3 pl-10 rounded-md bg-white bg-opacity-90 focus:outline-none border border-gray-300 focus:ring-2 focus:ring-orange-400" />
+          <svg class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M4 4h16v16H4z" stroke="none"/><path d="M4 4l8 8 8-8"/>
+          </svg>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-800 mb-1">Password</label>
+        <div class="relative">
+          <input type="password" placeholder="Enter your password" class="w-full p-3 pl-10 pr-10 rounded-md bg-white bg-opacity-90 focus:outline-none border border-gray-300 focus:ring-2 focus:ring-orange-400" />
+          <svg class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M12 15v2" /><path d="M12 7v2" /><path d="M4 12a8 8 0 0116 0" />
+          </svg>
+          <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">👁</button>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-sm text-gray-700">
+        <label><input type="checkbox" class="mr-2" /> Remember me</label>
+        <a href="#" class="text-orange-500 hover:underline">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-md font-semibold text-sm">
+        Sign In
+      </button>
+
+      <!-- Divider -->
+      <div class="flex items-center gap-2 text-xs text-gray-400 my-4">
+        <hr class="flex-grow border-gray-300" />
+        <span class="uppercase">OR CONTINUE WITH</span>
+        <hr class="flex-grow border-gray-300" />
+      </div>
+
+      <!-- Social -->
+      <div class="grid grid-cols-2 gap-4">
+        <button class="flex items-center justify-center gap-2 border py-2 rounded-md bg-white hover:bg-gray-100 text-sm font-medium">
+          <img src="https://www.svgrepo.com/show/355037/google.svg" class="w-4 h-4" alt="Google" /> Google
+        </button>
+        <button class="flex items-center justify-center gap-2 border py-2 rounded-md bg-white hover:bg-gray-100 text-sm font-medium">
+          <img src="https://www.svgrepo.com/show/349554/facebook.svg" class="w-4 h-4" alt="Facebook" /> Facebook
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
