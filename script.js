@@ -47,6 +47,27 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
+    // Handle "Join This Group" buttons
+    const groupCards = document.querySelectorAll('.group-card');
+
+    groupCards.forEach(card => {
+        const joinButton = card.querySelector('.btn-secondary');
+
+        if (joinButton) {
+            joinButton.addEventListener('click', function () {
+                const groupTitleEl = card.querySelector('.group-title');
+                const groupTitle = groupTitleEl ? groupTitleEl.textContent.trim() : '';
+
+                if (groupTitle) {
+                    const url = `groupinfo.html?title=${encodeURIComponent(groupTitle)}`;
+                    console.log(`Navigating to: ${url}`);
+                    window.location.href = url;
+                } else {
+                    alert('Group title not found.');
+                }
+            });
+        }
+    });
 
     // Header button navigation
     const loginButton = document.querySelector('.btn-ghost');

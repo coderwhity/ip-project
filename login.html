@@ -1,89 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | TrekMate</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .glass-card {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 1.5rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
     .tab-active {
       background-color: white;
-      color: black;
+      color: #1f2937;
     }
   </style>
 </head>
-<body class="bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center" style="background-image: url('https://source.unsplash.com/1600x900/?mountains');">
 
-  <!-- Login Modal -->
-  <div class="glass-card p-8 w-full max-w-md animate-fade-in-up">
+<body class="bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center relative"
+  style="background-image: url('https://cdn.pixabay.com/photo/2019/01/02/18/25/beautiful-3909346_1280.jpg');">
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 z-0"></div>
+
+  <!-- Login/Signup Card -->
+  <div class="glass-card p-8 w-full max-w-md z-10 text-white">
     <!-- Header -->
     <div class="flex justify-between items-center mb-6">
-      <h2 class="text-2xl font-bold text-gray-900">Welcome to TrekMate</h2>
-      <button class="text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+      <h2 class="text-2xl font-bold">Welcome to TrekMate</h2>
     </div>
 
     <!-- Tabs -->
-    <div class="flex mb-6 bg-white/20 rounded overflow-hidden">
-      <button class="w-1/2 py-2 tab-active font-medium text-sm rounded-l">Login</button>
-      <button class="w-1/2 py-2 text-white hover:bg-white/30 font-medium text-sm">Sign Up</button>
+    <div class="flex mb-6 bg-white/10 rounded overflow-hidden text-sm">
+      <button id="loginTab" onclick="showLogin()" class="w-1/2 py-2 tab-active font-semibold rounded-l">Login</button>
+      <button id="signupTab" onclick="showSignup()" class="w-1/2 py-2 hover:bg-white/20 font-semibold">Sign Up</button>
     </div>
 
-    <!-- Form -->
-    <form class="space-y-4">
+    <!-- Login Form -->
+    <form id="loginForm" class="space-y-4">
       <div>
-        <label class="block text-sm font-medium text-gray-800 mb-1">Email</label>
-        <div class="relative">
-          <input type="email" placeholder="Enter your email" class="w-full p-3 pl-10 rounded-md bg-white bg-opacity-90 focus:outline-none border border-gray-300 focus:ring-2 focus:ring-orange-400" />
-          <svg class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path d="M4 4h16v16H4z" stroke="none"/><path d="M4 4l8 8 8-8"/>
-          </svg>
-        </div>
+        <label class="block text-sm font-medium mb-1">Email</label>
+        <input type="email" placeholder="Enter your email"
+          class="w-full p-3 rounded-md bg-white bg-opacity-90 text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400" />
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-gray-800 mb-1">Password</label>
-        <div class="relative">
-          <input type="password" placeholder="Enter your password" class="w-full p-3 pl-10 pr-10 rounded-md bg-white bg-opacity-90 focus:outline-none border border-gray-300 focus:ring-2 focus:ring-orange-400" />
-          <svg class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path d="M12 15v2" /><path d="M12 7v2" /><path d="M4 12a8 8 0 0116 0" />
-          </svg>
-          <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">👁</button>
-        </div>
+        <label class="block text-sm font-medium mb-1">Password</label>
+        <input type="password" placeholder="Enter your password"
+          class="w-full p-3 rounded-md bg-white bg-opacity-90 text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400" />
       </div>
 
-      <div class="flex justify-between items-center text-sm text-gray-700">
+      <div class="flex justify-between items-center text-sm text-gray-200">
         <label><input type="checkbox" class="mr-2" /> Remember me</label>
-        <a href="#" class="text-orange-500 hover:underline">Forgot password?</a>
+        <a href="#" class="text-orange-400 hover:underline" onclick="showForgotPassword()">Forgot password?</a>
       </div>
 
-      <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-md font-semibold text-sm">
+      <button type="submit"
+        class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-md font-semibold text-sm transition-all duration-200">
         Sign In
       </button>
-
-      <!-- Divider -->
-      <div class="flex items-center gap-2 text-xs text-gray-400 my-4">
-        <hr class="flex-grow border-gray-300" />
-        <span class="uppercase">OR CONTINUE WITH</span>
-        <hr class="flex-grow border-gray-300" />
-      </div>
-
-      <!-- Social -->
-      <div class="grid grid-cols-2 gap-4">
-        <button class="flex items-center justify-center gap-2 border py-2 rounded-md bg-white hover:bg-gray-100 text-sm font-medium">
-          <img src="https://www.svgrepo.com/show/355037/google.svg" class="w-4 h-4" alt="Google" /> Google
-        </button>
-        <button class="flex items-center justify-center gap-2 border py-2 rounded-md bg-white hover:bg-gray-100 text-sm font-medium">
-          <img src="https://www.svgrepo.com/show/349554/facebook.svg" class="w-4 h-4" alt="Facebook" /> Facebook
-        </button>
-      </div>
     </form>
-  </div>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="space-y-4 hidden">
+      <div>
+        <label class="block text-sm font-medium mb-1">Full Name</label>
+        <input type="text" placeholder="Enter your name"
+          class="w-full p-3 rounded-md bg-white bg-opacity-90 text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Email</label>
+        <input type="email" placeholder="Enter your email"
+          class="w-full p-3 rounded-md bg-white bg-opacity-90 text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Password</label>
+        <input type="password" placeholder="Create password"
+          class="w-full p-3 rounded-md bg-white bg-opacity-90 text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Confirm Password</label>
+        <input type="password" placeholder="Confirm password"
+          class="w-full p-3 rounded-md bg-white bg-opacity-90 text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+      </div>
+
+      <button type="submit"
+        class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-md font-semibold text-sm transition-all duration-200">
+        Sign Up
+      </button>
+    </form>
+
+    <!-- Forgot Password Form -->
+    <form id="forgotForm" class="space-y-4 hidden">
+      <div>
+        <label class="block text-sm font-medium mb-1">Email</label>
+        <input type="email" placeholder="Enter your registered email"
+          class="w-full p-3 rounded-md bg-white bg-opacity-90 text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+      </div>
+      <button type="submit"
+        class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-md font-semibold text-sm transition-all duration-200">
+        Send Reset Link
+      </button>
+      <p class="text-sm text-gray-300 text-center mt-2">
+        <a href="#" onclick="showLogin()" class="hover:underline text-orange-400">← Back to Login</a>
+      </p>
+    </form>
+
+    <!-- Divider -->
+    <!-- <div class="flex items-center gap-2 text-xs text-gray-300 my-4">
+      <hr class="flex-grow border-gray-400" />
+      <span class="uppercase">OR CONTINUE WITH</span>
+      <hr class="flex-grow border-gray-400" />
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <button
+        class="flex items-center justify-center gap-2 border py-2 rounded-md bg-white text-gray-700 hover:bg-gray-100 text-sm font-medium transition-all">
+        <img src="https://www.svgrepo.com/show/355037/google.svg" class="w-4 h-4" alt="Google" /> Google
+      </button>
+      <button
+        class="flex items-center justify-center gap-2 border py-2 rounded-md bg-white text-gray-700 hover:bg-gray-100 text-sm font-medium transition-all">
+        <img src="https://www.svgrepo.com/show/349554/facebook.svg" class="w-4 h-4" alt="Facebook" /> Facebook
+      </button>
+    </div>
+  </div> -->
+
+  <!-- JS to Toggle Forms -->
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const forgotForm = document.getElementById('forgotForm');
+    const loginTab = document.getElementById('loginTab');
+    const signupTab = document.getElementById('signupTab');
+
+    function showLogin() {
+      loginForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
+      forgotForm.classList.add('hidden');
+      loginTab.classList.add('tab-active');
+      signupTab.classList.remove('tab-active');
+    }
+
+    function showSignup() {
+      signupForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+      forgotForm.classList.add('hidden');
+      signupTab.classList.add('tab-active');
+      loginTab.classList.remove('tab-active');
+    }
+
+    function showForgotPassword() {
+      loginForm.classList.add('hidden');
+      signupForm.classList.add('hidden');
+      forgotForm.classList.remove('hidden');
+      loginTab.classList.remove('tab-active');
+      signupTab.classList.remove('tab-active');
+    }
+  </script>
 </body>
+
 </html>
