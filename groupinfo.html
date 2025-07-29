@@ -112,7 +112,7 @@
       color: white;
     }
 
-    .follow-btn {
+    .follow-btn, .upload-btn {
       background-color: var(--primary);
       color: white;
     }
@@ -199,7 +199,7 @@
       padding-bottom: 10px;
     }
 
-    .image-scroll img {
+    .image-scroll img, .image-scroll video {
       height: 200px;
       border-radius: 10px;
       scroll-snap-align: start;
@@ -216,9 +216,139 @@
     }
 
     @media screen and (max-width: 600px) {
-      .image-scroll img {
+      .image-scroll img, .image-scroll video {
         height: 150px;
       }
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: var(--light-bg);
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-mode .modal-content {
+      background: #292929;
+      color: var(--text-light);
+    }
+
+    .modal-content h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    body.dark-mode .modal-content input,
+    body.dark-mode .modal-content textarea {
+      background: #333;
+      border-color: #444;
+      color: var(--text-light);
+    }
+
+    .drop-zone {
+      border: 2px dashed #ccc;
+      padding: 20px;
+      text-align: center;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    body.dark-mode .drop-zone {
+      border-color: #444;
+      background: #333;
+    }
+
+    .drop-zone.dragover {
+      border-color: var(--primary);
+      background: #f0f0f0;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal-content .submit-btn {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .modal-content .cancel-btn {
+      background-color: #888;
+      color: white;
+      margin-left: 10px;
+    }
+
+    /* Preview Styles */
+    .preview-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .preview-item {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .preview-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .preview-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .preview-item .video-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #333;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      text-align: center;
+      padding: 5px;
     }
   </style>
 </head>
@@ -242,6 +372,7 @@
     <div class="group-actions">
       <button class="share-btn">Share</button>
       <button class="follow-btn">Follow</button>
+      <button class="upload-btn" onclick="openModal()">Upload Post</button>
     </div>
   </div>
 
@@ -254,6 +385,25 @@
 
   <div class="tab-content" id="tabContent">
     <!-- Loaded dynamically -->
+  </div>
+
+  <!-- Modal for Upload Form -->
+  <div class="modal" id="uploadModal">
+    <div class="modal-content">
+      <h2>Create New Trek Post</h2>
+      <input type="text" id="postTitle" placeholder="Trek Title" required />
+      <textarea id="postCaption" placeholder="Description" rows="4" required></textarea>
+      <input type="date" id="visitedDate" required />
+      <div class="drop-zone" id="dropZone">
+        Drag and drop images or videos here (or click to select)
+        <input type="file" id="mediaInput" accept="image/*,video/*" multiple style="display: none;" />
+      </div>
+      <div class="preview-container" id="previewContainer"></div>
+      <div style="display: flex; justify-content: flex-end;">
+        <button class="submit-btn" onclick="submitPost()">Submit</button>
+        <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -332,6 +482,11 @@
           <img src="./images/kudremukhgroup1.webp" alt="Kudremukh 1">
           <img src="./images/kudremukhgroup2.jpg" alt="Kudremukh 2">
           <img src="./images/kudremukhgroup3.webp" alt="Kudremukh 3">
+          <!-- video -->
+          <video controls>
+            <source src="./assets/nature-1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
       <div class="trek-post">
@@ -354,6 +509,148 @@
 
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
+    }
+
+    // Modal and Drag-and-Drop Functionality
+    const modal = document.getElementById('uploadModal');
+    const dropZone = document.getElementById('dropZone');
+    const mediaInput = document.getElementById('mediaInput');
+    const previewContainer = document.getElementById('previewContainer');
+
+    function openModal() {
+      modal.style.display = 'flex';
+      dropZone.textContent = 'Drag and drop images or videos here (or click to select)';
+      previewContainer.innerHTML = '';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      document.getElementById('postTitle').value = '';
+      document.getElementById('postCaption').value = '';
+      document.getElementById('visitedDate').value = '';
+      mediaInput.value = '';
+      dropZone.textContent = 'Drag and drop images or videos here (or click to select)';
+      previewContainer.innerHTML = '';
+    }
+
+    // Function to update preview
+    function updatePreview(files) {
+      previewContainer.innerHTML = '';
+      for (let file of files) {
+        const fileType = file.type.startsWith('image') ? 'img' : 'video';
+        const src = URL.createObjectURL(file);
+        const previewItem = document.createElement('div');
+        previewItem.className = 'preview-item';
+        if (fileType === 'img') {
+          previewItem.innerHTML = `<img src="${src}" alt="${file.name}" title="${file.name}">`;
+        } else {
+          // For videos, show a placeholder with file name (thumbnail generation is complex client-side)
+          previewItem.innerHTML = `<div class="video-placeholder">${file.name}</div>`;
+        }
+        previewContainer.appendChild(previewItem);
+        console.log(`Preview added for file: ${file.name}, type: ${fileType}`);
+      }
+    }
+
+    // Click to trigger file input
+    dropZone.addEventListener('click', () => {
+      console.log('Drop zone clicked, triggering file input');
+      mediaInput.click();
+    });
+
+    // Prevent default behavior for drag events
+    dropZone.addEventListener('dragenter', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Drag enter');
+      dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Drag over');
+      dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Drag leave');
+      dropZone.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Drop event triggered');
+      dropZone.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        console.log(`${files.length} file(s) dropped:`, files);
+        const dataTransfer = new DataTransfer();
+        for (let file of files) {
+          dataTransfer.items.add(file);
+        }
+        mediaInput.files = dataTransfer.files;
+        dropZone.textContent = `${files.length} file(s) selected`;
+        updatePreview(files);
+      } else {
+        console.log('No files dropped');
+      }
+    });
+
+    mediaInput.addEventListener('change', () => {
+      const files = mediaInput.files;
+      console.log('File input changed, files selected:', files);
+      if (files.length > 0) {
+        dropZone.textContent = `${files.length} file(s) selected`;
+        updatePreview(files);
+      } else {
+        dropZone.textContent = 'Drag and drop images or videos here (or click to select)';
+        previewContainer.innerHTML = '';
+      }
+    });
+
+    function submitPost() {
+      const title = document.getElementById('postTitle').value;
+      const caption = document.getElementById('postCaption').value;
+      const date = document.getElementById('visitedDate').value;
+      const files = mediaInput.files;
+
+      if (!title || !caption || !date) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      let mediaHTML = '';
+      for (let file of files) {
+        const fileType = file.type.startsWith('image') ? 'img' : 'video';
+        const src = URL.createObjectURL(file);
+        console.log(`Processing file: ${file.name}, type: ${fileType}`);
+        if (fileType === 'img') {
+          mediaHTML += `<img src="${src}" alt="${title}">`;
+        } else {
+          mediaHTML += `<video controls><source src="${src}" type="${file.type}"></video>`;
+        }
+      }
+
+      const newPost = `
+        <div class="trek-post">
+          <div class="trek-title">${title}</div>
+          <div class="trek-date">Visited on: ${new Date(date).toLocaleString('en-US', { month: 'long', year: 'numeric' })}</div>
+          <div class="trek-caption">${caption}</div>
+          <div class="image-scroll">
+            ${mediaHTML}
+          </div>
+        </div>
+      `;
+
+      contents[3] = newPost + contents[3];
+      if (tabs[3].classList.contains('active')) {
+        tabContent.innerHTML = contents[3];
+      }
+      closeModal();
     }
 
     // Show Overview on load

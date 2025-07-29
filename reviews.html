@@ -153,7 +153,8 @@
 
   // Load from localStorage if available
   let reviews = JSON.parse(localStorage.getItem("reviews")) || [
-    { name: "Priya Sharma", rating: 5, comment: "Absolutely incredible experience with Western Ghats Wanderers!", ago: "2 weeks ago" },
+    { name: "Priya Sharma", rating: 5, comment: "Absolutely incredible experience with Western Ghats Wanderers!", ago: "2 weeks ago", audio: "assets/audio.mp3" },
+    { name: "Rajesh Kumar", rating: 4, comment: "The trek was well organized and the guides were knowledgeable.", ago: "3 weeks ago" },
     { name: "Rahul Verma", rating: 5, comment: "Best trekking group in Mumbai! The monsoon waterfall trek was magical.", ago: "1 month ago" },
     { name: "Anita Patel", rating: 4, comment: "Great group for beginners! Looking forward to the next adventure!", ago: "6 weeks ago" }
   ];
@@ -225,6 +226,10 @@
           <span style="margin-left:auto;font-size:12px;color:gray;">${r.ago}</span>
         </div>
         <p style="margin-left:50px;">${r.comment}</p>
+        <audio controls autoplay>
+            <source src="${r.audio}">
+          Your browser does not support the audio element.
+        </audio>
       `;
       list.appendChild(div);
     });
