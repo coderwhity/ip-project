@@ -38,6 +38,11 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
+    .navbar canvas {
+      width: 80px;
+      height: 60px;
+    }
+
     body.dark-mode .navbar {
       background-color: #292929;
     }
@@ -352,11 +357,13 @@
     }
   </style>
 </head>
+
 <body>
   <div class="navbar">
+    <canvas id="myCanvas" width="80" height="60"></canvas>
     <h2>TrekMate</h2>
     <div class="auth">
-      <button>Login</button>
+      <button onclick="window.location.href='login.html'">Login</button>
       <button>Join Now</button>
       <button class="toggle-mode" onclick="toggleTheme()">Toggle Dark Mode</button>
     </div>
@@ -409,6 +416,10 @@
   <script>
     const tabs = document.querySelectorAll('.tab');
     const tabContent = document.getElementById('tabContent');
+    const modal = document.getElementById('uploadModal');
+    const dropZone = document.getElementById('dropZone');
+    const mediaInput = document.getElementById('mediaInput');
+    const previewContainer = document.getElementById('previewContainer');
 
     const contents = [
       // Overview
@@ -482,7 +493,6 @@
           <img src="./images/kudremukhgroup1.webp" alt="Kudremukh 1">
           <img src="./images/kudremukhgroup2.jpg" alt="Kudremukh 2">
           <img src="./images/kudremukhgroup3.webp" alt="Kudremukh 3">
-          <!-- video -->
           <video controls>
             <source src="./assets/nature-1.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -511,104 +521,72 @@
       document.body.classList.toggle('dark-mode');
     }
 
-    // Modal and Drag-and-Drop Functionality
-    const modal = document.getElementById('uploadModal');
-    const dropZone = document.getElementById('dropZone');
-    const mediaInput = document.getElementById('mediaInput');
-    const previewContainer = document.getElementById('previewContainer');
-
     function openModal() {
       modal.style.display = 'flex';
       dropZone.textContent = 'Drag and drop images or videos here (or click to select)';
       previewContainer.innerHTML = '';
-    }
-
-    function closeModal() {
-      modal.style.display = 'none';
       document.getElementById('postTitle').value = '';
       document.getElementById('postCaption').value = '';
       document.getElementById('visitedDate').value = '';
       mediaInput.value = '';
-      dropZone.textContent = 'Drag and drop images or videos here (or click to select)';
-      previewContainer.innerHTML = '';
     }
 
-    // Function to update preview
-    function updatePreview(files) {
+    function closeModal() {
+      modal.style.display = 'none';
+      previewContainer.innerHTML = '';
+      dropZone.textContent = 'Drag and drop images or videos here (or click to select)';
+    }
+
+    function showPreview(files) {
       previewContainer.innerHTML = '';
       for (let file of files) {
-        const fileType = file.type.startsWith('image') ? 'img' : 'video';
-        const src = URL.createObjectURL(file);
+        const isImage = file.type.startsWith('image');
         const previewItem = document.createElement('div');
         previewItem.className = 'preview-item';
-        if (fileType === 'img') {
-          previewItem.innerHTML = `<img src="${src}" alt="${file.name}" title="${file.name}">`;
+        if (isImage) {
+          const src = URL.createObjectURL(file);
+          previewItem.innerHTML = `<img src="${src}" alt="${file.name}">`;
         } else {
-          // For videos, show a placeholder with file name (thumbnail generation is complex client-side)
           previewItem.innerHTML = `<div class="video-placeholder">${file.name}</div>`;
         }
         previewContainer.appendChild(previewItem);
-        console.log(`Preview added for file: ${file.name}, type: ${fileType}`);
       }
+      dropZone.textContent = `${files.length} file(s) selected`;
     }
 
-    // Click to trigger file input
+    // Click to open file input
     dropZone.addEventListener('click', () => {
-      console.log('Drop zone clicked, triggering file input');
       mediaInput.click();
     });
 
-    // Prevent default behavior for drag events
-    dropZone.addEventListener('dragenter', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      console.log('Drag enter');
-      dropZone.classList.add('dragover');
+    // Handle file selection via input
+    mediaInput.addEventListener('change', () => {
+      const files = mediaInput.files;
+      if (files.length > 0) {
+        showPreview(files);
+      } else {
+        dropZone.textContent = 'Drag and drop images or videos here (or click to select)';
+        previewContainer.innerHTML = '';
+      }
     });
 
+    // Handle drag-and-drop
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      e.stopPropagation();
-      console.log('Drag over');
       dropZone.classList.add('dragover');
     });
 
-    dropZone.addEventListener('dragleave', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      console.log('Drag leave');
+    dropZone.addEventListener('dragleave', () => {
       dropZone.classList.remove('dragover');
     });
 
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      e.stopPropagation();
-      console.log('Drop event triggered');
       dropZone.classList.remove('dragover');
       const files = e.dataTransfer.files;
       if (files.length > 0) {
-        console.log(`${files.length} file(s) dropped:`, files);
-        const dataTransfer = new DataTransfer();
-        for (let file of files) {
-          dataTransfer.items.add(file);
-        }
-        mediaInput.files = dataTransfer.files;
-        dropZone.textContent = `${files.length} file(s) selected`;
-        updatePreview(files);
-      } else {
-        console.log('No files dropped');
-      }
-    });
-
-    mediaInput.addEventListener('change', () => {
-      const files = mediaInput.files;
-      console.log('File input changed, files selected:', files);
-      if (files.length > 0) {
-        dropZone.textContent = `${files.length} file(s) selected`;
-        updatePreview(files);
-      } else {
-        dropZone.textContent = 'Drag and drop images or videos here (or click to select)';
-        previewContainer.innerHTML = '';
+        mediaInput.files = files;
+        showPreview(files);
       }
     });
 
@@ -625,10 +603,9 @@
 
       let mediaHTML = '';
       for (let file of files) {
-        const fileType = file.type.startsWith('image') ? 'img' : 'video';
+        const isImage = file.type.startsWith('image');
         const src = URL.createObjectURL(file);
-        console.log(`Processing file: ${file.name}, type: ${fileType}`);
-        if (fileType === 'img') {
+        if (isImage) {
           mediaHTML += `<img src="${src}" alt="${title}">`;
         } else {
           mediaHTML += `<video controls><source src="${src}" type="${file.type}"></video>`;
@@ -653,8 +630,30 @@
       closeModal();
     }
 
-    // Show Overview on load
     showTab(0);
   </script>
+  <script>
+const c = document.getElementById("myCanvas");
+const ctx = c.getContext("2d");
+
+ctx.beginPath();
+ctx.moveTo(50, 10);
+ctx.lineTo(30, 50);
+ctx.lineTo(70, 50);
+ctx.closePath();
+ctx.fillStyle = "lightgreen";
+ctx.fill();
+
+ctx.beginPath();
+ctx.moveTo(30, 10);
+ctx.lineTo(10, 50);
+ctx.lineTo(50, 50);
+ctx.closePath();
+ctx.fillStyle = "green";
+ctx.fill();
+
+ctx.strokeStyle = "black";
+ctx.stroke();
+</script>
 </body>
 </html>

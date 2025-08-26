@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (joinButton) {
         joinButton.addEventListener('click', function () {
-            alert('Registration form would open here');
+            window.location.href = 'signup.html';
         });
     }
 

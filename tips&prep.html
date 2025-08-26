@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrekMate · Safety Guidelines</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, hsl(174, 60%, 25%), hsl(210, 40%, 30%));
+      color: white;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      color: white;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1, h2 {
+      color: #2d6a4f;
+    }
+    h2 {
+      border-left: 4px solid #8aa99b;
+      padding-left: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    section {
+      margin-bottom: 2rem;
+      background: white;
+      padding: 1.25rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    li {
+      margin: .6rem 0;
+      position: relative;
+    }
+    li::before {
+      content: "✔";
+      color: #2d6a4f;
+      font-size: 0.9rem;
+      margin-right: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(135deg, hsl(174, 60%, 25%), hsl(210, 40%, 30%));
+      font-size: .9rem;
+      color: #e9ecef;
+    }
+    footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TrekMate - Safety Guidelines</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>First Aid</h2>
+      <ul>
+        <li>Carry a compact first aid kit with bandages, antiseptic, and essential medicines.</li>
+        <li>Know basic first aid procedures for cuts, sprains, and dehydration.</li>
+        <li>Clean and cover any wounds immediately to prevent infection.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Weather Preparation</h2>
+      <ul>
+        <li>Check the weather forecast before starting your trek.</li>
+        <li>Dress in layers so you can adjust to temperature changes.</li>
+        <li>Carry rain gear, a sun hat, and sunscreen.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Hydration & Nutrition</h2>
+      <ul>
+        <li>Drink water regularly to stay hydrated, especially at higher altitudes.</li>
+        <li>Carry electrolyte packs or energy snacks for long treks.</li>
+        <li>Purify water from natural sources before drinking.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Trail Safety</h2>
+      <ul>
+        <li>Stay on marked trails and avoid shortcuts.</li>
+        <li>Trek with a group and inform someone about your trekking plan.</li>
+        <li>Respect nature: do not disturb wildlife and leave no trace behind.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> TrekMate • Stay safe, trek smart.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
